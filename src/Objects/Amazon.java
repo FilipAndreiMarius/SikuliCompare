@@ -44,39 +44,45 @@ public class Amazon {
 
 
         images_array = utils.getImages(Object_Constants.AMAZON_IMAGE_FOLDER);
+        image_patterns=utils.getImages(AMAZON_PATTERN_FOLDER);
 
-        for (int i = 0; i < images_array.size(); i++) {
-            Object o = images_array.get(i);
-            String path = o.toString();
-            image_patterns=utils.getImages(AMAZON_PATTERN_FOLDER);
-
-              for(int j=0;j<image_patterns.size();j++) {
-                  if(First_non_blank_found &&SearchBar!=true && LordOfTheRingsSearch!=true){
-                     j++;
-                  }
-                  Object p = image_patterns.get(j);
+        for (int i = 0; i < image_patterns.size(); i++) {
+            for(int j=0;j<images_array.size();j++) {
+                  Object p = images_array.get(j);
                   String path_pattern = p.toString();
-                  Boolean result = Utils.searchImage(path, path_pattern);
-                  counter = i;
-                  if (result==true && path_pattern.contains("FirstNonBlank")) {
+                   String fff=image_patterns.get(i).toString();
+
+                 Boolean result =false;
+
+                Utils.run(path_pattern, fff);
+
+
+                result = Utils.searchImage(path_pattern, fff);
+                  counter = j;
+
+                  if (result==true && fff.contains("FirstNonBlank")) {
                       frame_number = counter;
                       reportObject.accumulate(FIRST_NON_BLANK, frame_number);
                       First_non_blank_found=true;
+                      i=i+1;
+
                   }
-                  if (First_non_blank_found==true&&result==true && path_pattern.contains("SearchBarHeroElement")) {
+                  if (First_non_blank_found==true&&result==true && fff.contains("SearchBarHeroElement")) {
                       frame_number = counter;
                       reportObject.accumulate(SEARCH_BAR_HERO, frame_number);
                       SearchBar=true;
+                      i=i+1;
                   }
-                  if (First_non_blank_found==true&&result==true && path_pattern.contains("SearchLordOfTheRings.png")) {
+                  if (/*First_non_blank_found==true&&*/result==true && fff.contains("SearchLordOfTheRings.png")) {
                       frame_number = counter;
                       reportObject.accumulate(LORD_OF_THE_RINGS_SEARCH_ACTION, frame_number);
                       LordOfTheRingsSearch=true;
+                      break;
                   }
                   if(SearchBar && First_non_blank_found &&LordOfTheRingsSearch){
                       return reportObject;
                   }
-      break;
+     // break;
               }
         }
         return reportObject;
