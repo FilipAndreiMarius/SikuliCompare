@@ -8,6 +8,7 @@ import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -90,12 +91,37 @@ public class Utils {
         Double x=mmr.maxLoc.x;
         System.out.print("Max val="+mmr.maxVal+"\n"+"Min val="+mmr.minVal+"\n"+"MinLoc="+mmr.minLoc+"\n"+"MaxLoc="+mmr.maxLoc+"\n");
 
-
-
         // Save the visualized detection.
         System.out.println("Writing " + "C:\\test");
 
         Imgcodecs.imwrite("match1.png", img);
 
     }
+
+
+    public static void createDirectory(String directoryName){
+
+        File file=new File(directoryName);
+
+        if(!file.exists()) {
+            System.out.println("Creating directory:" + file.getName());
+            Boolean result = false;
+
+            try {
+                file.mkdir();
+                result=true;
+            }
+            catch (SecurityException se){
+            se.getLocalizedMessage();
+            }
+            if(result){
+                System.out.print("DIR created");
+            }
+
+        }
+    }
+
+
+
+
 }
