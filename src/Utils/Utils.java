@@ -8,8 +8,7 @@ import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -99,9 +98,56 @@ public class Utils {
     }
 
 
-    public static void createDirectory(String directoryName){
+
+    public static Boolean checkIfDirectoryExists(String directoryName){
+
+
+        return true;
+    }
+
+
+    public static void runCmd(String command,Boolean runTests) throws IOException, InterruptedException {
+
+
+        ProcessBuilder builder=new ProcessBuilder("cmd.exe","/c",command);
+        builder.redirectErrorStream(true);
+        Process p=builder.start();
+
+
+        BufferedReader r=new BufferedReader(new InputStreamReader(p.getInputStream()));
+        OutputStream out=p.getOutputStream();
+        out.write("q\n".getBytes());
+        out.flush();
+        Thread.sleep(5000);
+
+        String line;
+        while(true){
+            line=r.readLine();
+            if(line==null){
+                break;
+            }
+            System.out.print("\n"+line);
+
+        }
+
+    }
+
+    public static String ffmpegStartVideo(String DirectoryPath){
+        StringBuilder command = new StringBuilder();
+        command.append("ffmpeg -f dshow -i video=")
+                .append("screen-capture-recorder")
+                .append(" -r 30 ")
+                .append("filip")
+                .append("\\Amazon")
+                .append(Math.random()*10 + 1)
+                .append(".mkv");
+        return command.toString();
+    }
+
+    public static String createDirectory(String directoryName){
 
         File file=new File(directoryName);
+        String PATH = null;
 
         if(!file.exists()) {
             System.out.println("Creating directory:" + file.getName());
@@ -110,18 +156,20 @@ public class Utils {
             try {
                 file.mkdir();
                 result=true;
+                PATH=file.getAbsolutePath();
+
             }
             catch (SecurityException se){
             se.getLocalizedMessage();
             }
             if(result){
                 System.out.print("DIR created");
+
+                return PATH;
             }
 
         }
+        return PATH;
     }
-
-
-
 
 }

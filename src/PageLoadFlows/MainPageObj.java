@@ -1,19 +1,10 @@
 package PageLoadFlows;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import java.awt.*;
-import java.net.MalformedURLException;
-
 /**
  * Created by andrei.filip on 10/31/2017.
  */
 public class MainPageObj {
-    static WebDriver driver1;
+  /*  static WebDriver driver1;
 
     @Before
     public void setUp() {
@@ -67,7 +58,7 @@ public class MainPageObj {
         amazon.runAllScenarios();
     }
 
-
+*/
 
 }
 

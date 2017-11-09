@@ -2,6 +2,7 @@ package PageLoadFlows;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -17,6 +18,7 @@ import static Constants.Page_Objects_Constants.searchItem;
 public class GooglePage {
 
     static WebDriver driver;
+    Boolean status;
 
     static By GoogleSearchBar = By.id("lst-ib");
     static By GoogleSearchButton = By.className("lsb");
@@ -26,15 +28,19 @@ public class GooglePage {
 
 
 
-    public GooglePage(WebDriver driver) throws MalformedURLException, AWTException {
+    public GooglePage() throws MalformedURLException, AWTException, InterruptedException {
+        System.setProperty("webdriver.gecko.driver", "C:\\Commons\\geckodriver.exe");
+        driver=new FirefoxDriver();
+        accessGsearch();
 
-        this.driver = driver;
+
+
     }
 
-    public void accessGsearch() throws MalformedURLException, AWTException {
-        url.thread.start();
-
+    public void accessGsearch() throws MalformedURLException, AWTException, InterruptedException {
+       // url.thread.start();
         driver.get(GsearchUrl);
+        Thread.sleep(3000);
 
 
 
@@ -55,10 +61,20 @@ public class GooglePage {
         driver.findElement(GoogleImage).click();
     }
 
-    public void runAllScenarios() throws MalformedURLException, AWTException {
+    public void runAllScenarios() throws MalformedURLException, AWTException, InterruptedException {
         accessGsearch();
         searchGoogle();
         accessImage();
+    }
+    public void quit(){
+        System.out.println("FINISH TEST");
+        driver.quit();
+
+    }
+
+    public Boolean changeStatus(Boolean status){
+        this.status=status;
+        return status;
     }
 
 }
