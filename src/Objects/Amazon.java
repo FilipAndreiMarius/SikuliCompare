@@ -54,7 +54,7 @@ public class Amazon {
 
                  Boolean result =false;
 
-                Utils.run(path_pattern, fff);
+               // Utils.searchImage(path_pattern, fff);
 
 
                 result = Utils.searchImage(path_pattern, fff);

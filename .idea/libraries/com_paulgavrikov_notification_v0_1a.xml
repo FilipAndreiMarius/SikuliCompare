@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="com.paulgavrikov.notification_v0.1a">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../lib/lib/com.paulgavrikov.notification_v0.1a.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

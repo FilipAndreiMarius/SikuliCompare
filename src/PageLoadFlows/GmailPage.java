@@ -1,6 +1,7 @@
 package PageLoadFlows;
 
 import Constants.Page_Objects_Constants;
+import com.paulgavrikov.notification.Notification;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 import static Constants.Page_Objects_Constants.GmailUrl;
 import static Constants.Page_Objects_Constants.YoutubLink;
@@ -27,6 +29,8 @@ public class GmailPage  {
     static By GmailtabElement = By.id("gb23");
     static By youtubeLinkElement = By.className("m_-7793005015168254029m_3189775553631395212video-title-font-class");
 
+    Notification notificationP = new Notification();
+
 
     public GmailPage(WebDriver driver) {
         this.driver = driver;
@@ -34,9 +38,12 @@ public class GmailPage  {
 
 
     public void loginGmail() throws InterruptedException, MalformedURLException, AWTException {
-        Notifications a=new Notifications("Gmail","GmailUrl is accessed") ;
-        a.run();
+     /*   Notifications a=new Notifications("Gmail","GmailUrl is accessed") ;
+        a.run();*/
        // a.stop();
+
+        TimeUnit.SECONDS.sleep(2);
+
         driver.get(GmailUrl);
         (new WebDriverWait(driver, 5))
                 .until(ExpectedConditions.presenceOfElementLocated(userNameElement));
@@ -49,21 +56,23 @@ public class GmailPage  {
 
     }
 
-    public static void accessEmail() throws MalformedURLException, AWTException {
+    public  void accessEmail() throws MalformedURLException, AWTException {
         (new WebDriverWait(driver, 6))
                 .until(ExpectedConditions.presenceOfElementLocated(tabElement));
         driver.findElement(tabElement).click();
 
         (new WebDriverWait(driver, 6))
                 .until(ExpectedConditions.presenceOfElementLocated(GmailtabElement));
+        notificationP.push("Gmail","Access Gmail");
         driver.findElement(GmailtabElement).click();
 
     }
 
-    public static void accessYoutubeLink() {
+    public  void accessYoutubeLink() {
         driver.get(YoutubLink);
         (new WebDriverWait(driver, 6))
                 .until(ExpectedConditions.presenceOfElementLocated(youtubeLinkElement));
+        notificationP.push("Gmail","Access YoutubeLink");
         driver.findElement(youtubeLinkElement).click();
     }
 

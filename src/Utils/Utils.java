@@ -36,7 +36,7 @@ public class Utils {
         ArrayList<Match> list = null;
         Finder finder = new Finder(imagePath1, new Region(286, 164, 108, 23));
 
-        Pattern pattern = new Pattern(imagePath2).similar((float) 0.5);
+        Pattern pattern = new Pattern(imagePath2).similar((float) 0.6);
 
         finder.find(pattern);
 
@@ -49,7 +49,7 @@ public class Utils {
     }
 
 
-    public static void run(String inFile, String templateFile) {
+    /*public static void run(String inFile, String templateFile) {
         System.out.println("\nRunning Template Matching");
         //System.load( "C:\\OpenCvs\\opencv\\build\\java\\x64\\opencv_java330.dll" );
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -95,7 +95,7 @@ public class Utils {
 
         Imgcodecs.imwrite("match1.png", img);
 
-    }
+    }*/
 
 
 

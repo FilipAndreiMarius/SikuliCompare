@@ -22,4 +22,22 @@ public class Object_Constants {
     public static final String LORD_OF_THE_RINGS_SEARCH_ACTION="lord_of_the_rings_search_action";
 
 
+    //GSearch Pattern path
+
+    public static final String GSEARCH_IMAGE_FOLDER = "F:\\workspace\\SikuliCompare\\SplitedVideos\\GSearch927.mkv";
+
+    public static final String GSEARCH_PATTERN_FOLDER = "F:\\workspace\\SikuliCompare\\Patterns\\GSearch_Patterns";
+    public static final String FIRST_NON_BLANK_PATTERN_GSEARCH = "F:\\workspace\\SikuliCompare\\Patterns\\GSearch_Patterns\\FirstNonBlank.png";
+    public static final String TOP_STORIES_HERO_PATH = "F:\\workspace\\SikuliCompare\\Patterns\\GSearch_Patterns\\HeroElement.png";
+    public static final String IMAGES_NON_BLANK_PATH = "F:\\workspace\\SikuliCompare\\Patterns\\GSearch_Patterns\\ImagesNonB.png";
+    public static final String IMAGES_HERO_ELEMENT = "F:\\workspace\\SikuliCompare\\Patterns\\GSearch_Patterns\\LastHero.png";
+
+
+    public static final String IMAGE_FIRST_NON_BLANK="image_first_non_blank";
+
+    public static final String LAST_HERO = "last_hero";
+
+    public static final String TOP_STORIES_HERO = "hero_element";
+
+
 }
